@@ -8,4 +8,4 @@ ln -s $HOME_DIR/nvim-linux64/bin/nvim /usr/local/bin/nvim
 mkdir -p $HOME_DIR/.config/nvim
 cp init.lua $HOME_DIR/.config/nvim/
 apt-get update
-apt-get install unzip nodejs npm
+apt-get -y install unzip nodejs npm

@@ -322,7 +322,7 @@ vim.o.termguicolors = true
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
-vim.keymap.set('n', '<leader>lh', '<cmd>ClangdSwitchSourceHeader<CR>', { desc = 'Clangd switch between source and header file' })
+vim.keymap.set('n', '<leader>l', '<cmd>ClangdSwitchSourceHeader<CR>', { desc = 'Clangd switch between source and header file' })
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -578,7 +578,14 @@ require('mason-lspconfig').setup()
 local servers = {
   clangd = {},
   -- gopls = {},
-  pyright = {},
+  pylsp = {},
+  bashls = {},
+  cmake = {},
+  dockerls = {},
+  docker_compose_language_service = {},
+  dotls = {},
+  jsonls = {},
+  yamls = {},
   -- rust_analyzer = {},
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },

@@ -197,12 +197,30 @@ require('lazy').setup({
   --     vim.cmd.colorscheme 'onedark'
   --   end,
   -- },
+  -- {
+  --   -- Theme inspired by Atom
+  --   'catppuccin/nvim',
+  --   priority = 1000,
+  --   config = function()
+  --     vim.cmd.colorscheme 'catppuccin-mocha'
+  --   end,
+  -- },
   {
-    -- Theme inspired by Atom
-    'catppuccin/nvim',
+    "folke/tokyonight.nvim",
+    lazy = false,
     priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'catppuccin-mocha'
+    opts = {
+      style = "storm",
+      transparent = true,
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
+    },
+    config = function(_, opts)
+      local tokyonight = require "tokyonight"
+      tokyonight.setup(opts)
+      tokyonight.load()
     end,
   },
   {
@@ -322,7 +340,8 @@ vim.o.termguicolors = true
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
-vim.keymap.set('n', '<leader>l', '<cmd>ClangdSwitchSourceHeader<CR>', { desc = 'Clangd switch between source and header file' })
+vim.keymap.set('n', '<leader>l', '<cmd>ClangdSwitchSourceHeader<CR>',
+  { desc = 'Clangd switch between source and header file' })
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })

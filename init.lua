@@ -476,7 +476,8 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 -- [[ Configure telescope-file-browser ]]
 
 -- open file_browser with the path of the current buffer
-vim.keymap.set('n', '<leader>fb', ':Telescope file_browser path=%:p:h select_buffer=true<CR>', { desc = 'Telescope file browser' })
+vim.keymap.set('n', '<leader>fb', ':Telescope file_browser path=%:p:h select_buffer=true<CR>',
+  { desc = 'Telescope file browser' })
 
 
 -- [[ Configure Treesitter ]]
@@ -632,7 +633,26 @@ require('mason-lspconfig').setup()
 local servers = {
   clangd = {},
   -- gopls = {},
-  pylsp = {},
+  pylsp = {
+    pylsp = {
+      plugins = {
+        -- formatter options
+        black = { enabled = true },
+        autopep8 = { enabled = false },
+        yapf = { enabled = false },
+        -- linter options
+        pylint = { enabled = true, executable = "pylint" },
+        pyflakes = { enabled = false },
+        pycodestyle = { enabled = false },
+        -- type checker
+        pylsp_mypy = { enabled = true },
+        -- auto-completion options
+        jedi_completion = { fuzzy = true },
+        -- import sorting
+        pyls_isort = { enabled = true },
+      },
+    },
+  },
   bashls = {},
   cmake = {},
   dockerls = {},

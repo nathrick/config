@@ -230,6 +230,9 @@ require('lazy').setup({
     end,
   },
   {
+    'ojroques/nvim-osc52',
+  },
+  {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
@@ -479,6 +482,10 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 vim.keymap.set('n', '<leader>fb', ':Telescope file_browser path=%:p:h select_buffer=true<CR>',
   { desc = 'Telescope file browser' })
 
+-- copying
+vim.keymap.set('n', '<leader>c', require('osc52').copy_operator, {expr = true})
+vim.keymap.set('n', '<leader>cc', '<leader>c_', {remap = true})
+vim.keymap.set('v', '<leader>c', require('osc52').copy_visual)
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`

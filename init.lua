@@ -48,6 +48,7 @@ vim.g.maplocalleader = ' '
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
+local home = vim.fn.expand("$HOME")
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
     'git',
@@ -293,6 +294,20 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
+  {
+    "jackMort/ChatGPT.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("chatgpt").setup({
+        api_key_cmd = "cat " .. home .. "/.ok"
+      })
+    end,
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "folke/trouble.nvim",
+      "nvim-telescope/telescope.nvim"
+    }
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
